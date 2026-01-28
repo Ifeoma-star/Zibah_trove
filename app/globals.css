@@ -1,26 +1,165 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
+/* Custom Colors for Zibahtrove Confectionery */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Brand Colors */
+  --color-maroon: #800020;
+  --color-cream: #FFFDD0;
+  --color-cream-dark: #F5F5DC;
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --radius: 0.625rem;
+  --background: #FFFDD0;
+  --foreground: #800020;
+  --card: #FFFFFF;
+  --card-foreground: #800020;
+  --popover: #FFFFFF;
+  --popover-foreground: #800020;
+  --primary: #800020;
+  --primary-foreground: #FFFDD0;
+  --secondary: #F5F5DC;
+  --secondary-foreground: #800020;
+  --muted: #F5F5DC;
+  --muted-foreground: #800020;
+  --accent: #F5F5DC;
+  --accent-foreground: #800020;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: rgba(128, 0, 32, 0.15);
+  --input: rgba(128, 0, 32, 0.15);
+  --ring: #800020;
+  --chart-1: #800020;
+  --chart-2: #A52A4A;
+  --chart-3: #C85A7A;
+  --chart-4: #E8A0B0;
+  --chart-5: #F5D0D8;
+  --sidebar: #FFFDD0;
+  --sidebar-foreground: #800020;
+  --sidebar-primary: #800020;
+  --sidebar-primary-foreground: #FFFDD0;
+  --sidebar-accent: #F5F5DC;
+  --sidebar-accent-foreground: #800020;
+  --sidebar-border: rgba(128, 0, 32, 0.15);
+  --sidebar-ring: #800020;
+}
+
+.dark {
+  --background: #1a0008;
+  --foreground: #FFFDD0;
+  --card: #2a0010;
+  --card-foreground: #FFFDD0;
+  --popover: #2a0010;
+  --popover-foreground: #FFFDD0;
+  --primary: #FFFDD0;
+  --primary-foreground: #800020;
+  --secondary: #3a0018;
+  --secondary-foreground: #FFFDD0;
+  --muted: #3a0018;
+  --muted-foreground: #E8A0B0;
+  --accent: #3a0018;
+  --accent-foreground: #FFFDD0;
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: rgba(255, 253, 208, 0.15);
+  --input: rgba(255, 253, 208, 0.2);
+  --ring: #FFFDD0;
+  --chart-1: #E8A0B0;
+  --chart-2: #C85A7A;
+  --chart-3: #A52A4A;
+  --chart-4: #800020;
+  --chart-5: #600018;
+  --sidebar: #2a0010;
+  --sidebar-foreground: #FFFDD0;
+  --sidebar-primary: #FFFDD0;
+  --sidebar-primary-foreground: #800020;
+  --sidebar-accent: #3a0018;
+  --sidebar-accent-foreground: #FFFDD0;
+  --sidebar-border: rgba(255, 253, 208, 0.15);
+  --sidebar-ring: #FFFDD0;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom scrollbar styling */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Serif font for headings */
+.font-serif {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+/* Marbling background pattern */
+.bg-marbling {
+  background-color: #FFFDD0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Cg fill='none' stroke='%23800020' stroke-width='1' opacity='0.1'%3E%3Cpath d='M0 50 Q100 25 200 50 T400 50'/%3E%3Cpath d='M0 100 Q100 75 200 100 T400 100'/%3E%3Cpath d='M0 150 Q100 125 200 150 T400 150'/%3E%3Cpath d='M0 200 Q100 175 200 200 T400 200'/%3E%3Cpath d='M0 250 Q100 225 200 250 T400 250'/%3E%3Cpath d='M0 300 Q100 275 200 300 T400 300'/%3E%3Cpath d='M0 350 Q100 325 200 350 T400 350'/%3E%3Ccircle cx='50' cy='50' r='30'/%3E%3Ccircle cx='150' cy='150' r='40'/%3E%3Ccircle cx='300' cy='80' r='25'/%3E%3Ccircle cx='350' cy='250' r='35'/%3E%3Ccircle cx='100' cy='300' r='30'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Image hover effects */
+.hover-zoom {
+  transition: transform 0.5s ease;
+}
+.hover-zoom:hover {
+  transform: scale(1.05);
 }
